@@ -3,12 +3,26 @@
 # Surface-Go-2-OpenCore
 macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenCore bootloader](https://github.com/acidanthera/OpenCorePkg).
 
+## Software Specifications
+| Software         | Version                            |
+| ---------------- | ---------------------------------- |
+| Target OS        | Apple macOS 13 Ventura and 14 Sonoma |
+| OpenCore         | [MOD-OC v1.0.1](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.1_08932be/OpenCore-Mod-1.0.1-RELEASE.zip) |
+| SMBIOS           | MacBookAir8,1 |
+| SSD format       | APFS file system, GPT partition table |
+
 ## Abstract
-Apart from the front and rear cameras, the IR camera (Windows Hello) the LTE modem, everything on the Core m3-8100Y version of the Surface Go 2 is working perfectly like on a real Mac. ACPI S3 Sleep is broken, but ACPI S4 Hibernate works great, though, and resuming from Hibernation takes around ten seconds. The advantage Hibernate has over Sleep is that the device doesn't consume any power while in a hibernated state.
+Apart from the front and rear cameras, the IR camera (Windows Hello) the LTE modem, everything on the Core m3-8100Y version of the Surface Go 2 is working perfectly like on a real Mac. ACPI S3 Sleep is broken, but ACPI S4 Hibernate works great, though, and resuming from Hibernation takes around ten seconds. The advantage Hibernate has over Sleep is that the device doesn't drav any power while in a hibernated state.
 
 The Surface Go 2 works great as a handy little macOS tablet. It won't entirely replace an iPad or even an Android tablet, but once set up properly, macOS is actually quite a nice tablet OS and almost on par with the Windows tablet experience. All the fancy Trackpad gestures available on macOS work on the Touchscreen as well and are very smooth and reliable. Folding the Type Cover behind the tablet disables the Keyboard and Trackpad and folding the Type Cover to the laptop position again re-enables both of them.
 
 The battery runtime is around five hours.
+
+> [!TIP]
+> I recommend installing `macOS 13 Ventura` rather than the newer `macOS 14 Sonoma` or `macOS 15 Sequoia`. The builtin Intel Wireless chip works almost perfectly with Apple's iServices and Continuity features on Ventura while those features are partially broken at the moment on newer versions of macOS.
+
+> [!IMPORTANT]
+> For macOS to be able to boot on the Surface Go 2, the `Secure Boot` option _**must be disabled**_ [in the UEFI](https://github.com/jlempen/Surface-Go-2-OpenCore/blob/main/README.md#uefi-settings). The boot screen will then display a large red bar with a padlock symbol at the top of the display when Secure Boot is disabled.
 
 ## Disclaimer
 This repository is neither a howto nor an installation manual. Using these files requires at least basic knowledge of [Acidanthera's OpenCore bootloader](https://github.com/acidanthera/OpenCorePkg), ACPI, UEFI and the art of hackintoshing in general. I recommend reading the excellent [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide), as well as all its linked resources. For those who wish to improve their hackintoshing knowledge, [5T33Z0's OC-Little-Translated](https://github.com/5T33Z0/OC-Little-Translated) repository is the most comprehensive resource I've found on the subject.
@@ -17,8 +31,6 @@ Although this repository is a fork of [kingo132's Surface Go 2 hackintosh reposi
 
 ## Recommendations
 I recommend completely erasing the device's SSD by creating a new GPT partition table before attempting to install macOS, as it makes the installation process much easier. You may use any Linux live ISO with a partitioning tool such as `GParted` or `KPartition` to erase the SSD.
-
-For macOS to be able to boot on the Surface Go 2, the `Secure Boot` option _**must be disabled**_ in the UEFI. The boot screen will then display a large red bar with a lock icon at the top of the display when Secure Boot is disabled. This is normal.
 
 Please be aware that all `PlatformInfo` and `SMBIOS` information was removed from the OpenCore `config.plist` files. Users will therefore need to generate their own `PlatformInfo` with [CorpNewt's GenSMBIOS tool](https://github.com/corpnewt/GenSMBIOS) before attempting to boot a Surface Go 2 with this repository's EFI folder.
 
@@ -29,18 +41,6 @@ The `kexts` required to enable the trackpad and the touchscreen are special vers
 Windows and Linux should be detected automagically by the OpenCore boot loader even when installed after macOS.
 
 This repository uses the unofficial OpenCore_NO_ACPI_Build fork of OpenCore by [btwise](https://gitee.com/btwise/OpenCore_NO_ACPI), wich is not endorsed by Acidanthera (the dev team behind OpenCore). The main (and only) difference between this fork and the official OpenCore version is that it allows to prevent ACPI injection (e.g. patches, tables, boot parameters) into other OSes besides macOS.
-
-<details>
-  <summary>Software Specifications</summary>
-  
-## Software Specifications
-| Software         | Version                            |
-| ---------------- | ---------------------------------- |
-| Target OS        | Apple macOS 13.6.7 Ventura and 14.5 Sonoma |
-| OpenCore         | [MOD-OC v1.0.1](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.1_08932be/OpenCore-Mod-1.0.1-RELEASE.zip) |
-| SMBIOS           | MacBookAir8,1 |
-| SSD format       | APFS file system, GPT partition table |
-</details>
 
 <details>
   <summary>Computer Specifications</summary>
