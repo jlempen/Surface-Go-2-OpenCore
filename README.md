@@ -3,11 +3,15 @@
 # Surface-Go-2-OpenCore
 macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenCore bootloader](https://github.com/acidanthera/OpenCorePkg).
 
+> [!IMPORTANT]
+> This EFI folder only supports the `Core m3-8100Y Microsoft Surface Go 2`. Surface Go 2 models with the `Pentium Gold` processors are not supported.
+
 ## Software Specifications
 | Software         | Version                            |
 | ---------------- | ---------------------------------- |
+| Target device    | Microsoft Surface Go 2 with Core m3-8100Y processor |
 | Target OS        | Apple macOS 13 Ventura, 14 Sonoma and 15 Sequoia |
-| OpenCore         | [MOD-OC v1.0.4](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.4_07c2042/OpenCore-Mod-1.0.4-RELEASE.zip) |
+| OpenCore         | [MOD-OC v1.0.5](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.5_b56882c/OpenCore-Mod-1.0.5-RELEASE.zip) |
 | SMBIOS           | MacBookAir8,1 |
 | SSD format       | APFS file system, GPT partition table |
 
