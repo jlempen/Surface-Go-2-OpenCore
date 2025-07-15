@@ -4,7 +4,9 @@
 macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenCore bootloader](https://github.com/acidanthera/OpenCorePkg).
 
 > [!IMPORTANT]
-> This EFI folder only supports the `Core m3-8100Y Microsoft Surface Go 2`. Surface Go 2 models with the `Pentium Gold` processors are not supported.
+> This EFI folder only supports the `Core m3-8100Y Microsoft Surface Go 2`. Surface Go 2 models with the `Pentium Gold` processors are not supported by this repository.
+> 
+> You may however head over to [jalower's repo for the Pentium Gold Y4425 Microsoft Surface Go 2](https://github.com/jalower/Surface_Go_2_Opencore) if you wish to run macOS on the `Pentium Gold` variant of the Surface Go 2.
 
 ## Software Specifications
 | Software         | Version                            |
