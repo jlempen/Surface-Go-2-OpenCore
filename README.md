@@ -10,8 +10,8 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 
 ## Latest News
 * (20251102) Audio is working in macOS Tahoe thanks to a convenient installer for VoodooHDA ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
-* (20251102) macOS Tahoe should now install and run on the SGO2, but internal audio and FileVault is broken
-* (20251102) New Bluetooth fixes for Sequia and hopefully Tahoe as well
+* (20251102) With the stuff merged today, macOS Tahoe should now install and run on the SGO2, but expect internal audio and FileVault to be broken
+* (20251102) New Bluetooth fixes for Sequoia and hopefully Tahoe as well
 * (20251102) Recent Linux distros such as Fedora 43 should now appear in the OC picker thanks to updated filesystem drivers
 
 ## Software Specifications
