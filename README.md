@@ -258,13 +258,16 @@ Repeat for every UEFI variable you wish to revert to its default value.
 ## Fixing audio on macOS Tahoe
 As Apple removed the `AppleHDA.kext` from macOS Tahoe, [Acidanthera's AppleALC.kext](https://github.com/acidanthera/AppleALC) wont't work on macOS Tahoe just yet. Digital audio through HDMI is not affected though. The easiest way to get back the internal speakers and microphone on macOS Tahoe is to install [SergeySlice's VoodooHDA audio driver](https://github.com/CloverHackyColor/VoodooHDA) with [chris1111's convenient VoodooHDA-Tahoe installer](https://github.com/chris1111/VoodooHDA-Tahoe).
 
+> [!IMPORTANT]
+> Before installing `VoodooHDA`, you'll need to lower the System Integrity Protection (SIP) by changing the value of `csr-active-config` in `NVRAM > 7C436110-AB2A-4BBB-A880-FE41995C9F82` from `00000000` to `03080000` in your `config.plist` file. Then reboot and reset the NVRAM by pressing the Space bar in the OpenCore picker and selecting the `Reset NVRAM` option. The system will reboot to the OpenCore picker again. Now boot your macOS Tahoe install, then proceed with installing `VoodooHDA`.
+
 You can [grab the latest installer](https://github.com/jlempen/Surface-Go-2-OpenCore/blob/main/Tools/VoodooHDA-Tahoe.pkg) from the Tools folder in my repository. Simply launch the installer and follow the instructions.
 
 Once you're back in macOS Tahoe after a reboot, head over to `System Settings -> Sound -> Output & Input` and select the `Output` tab, then select `Speaker (Analog)` as your sound output device.
 </details>
 
 <details>
-  <summary>Fix broken Bluetooth on Wake from Hibernation</summary>
+  <summary>Fixing broken Bluetooth on Wake from Hibernation</summary>
 
 ## Fixing broken Bluetooth on Wake from Hibernation
 After the device wakes up from Hibernation, Bluetooth may be broken / unable to connect.
