@@ -8,11 +8,16 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 > 
 > You may however head over to [jalower's repo for the Pentium Gold Y4425 Microsoft Surface Go 2](https://github.com/jalower/Surface_Go_2_Opencore) if you wish to run macOS on the `Pentium Gold` variant of the Surface Go 2.
 
+## Latest News
+* (20251102) macOS Tahoe should now install and run on the SGO2, but internal audio and FileVault is broken
+* (20251102) New Bluetooth fixes for Sequia and hopefully Tahoe as well
+* (20251102) Recent Linux distros such as Fedora 43 should now appear in the OC picker thanks to updated filesystem drivers
+
 ## Software Specifications
 | Software         | Version                            |
 | ---------------- | ---------------------------------- |
 | Target device    | Microsoft Surface Go 2 with Core m3-8100Y processor |
-| Target OS        | Apple macOS 13 Ventura, 14 Sonoma and 15 Sequoia |
+| Target OS        | Apple macOS 13 Ventura, 14 Sonoma, 15 Sequoia, 26 Tahoe (Work in Progress) |
 | OpenCore         | [MOD-OC v1.0.6](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.6_9cb2b0d/OpenCore-Mod-1.0.6-RELEASE.zip) |
 | SMBIOS           | MacBookAir8,1 |
 | SSD format       | APFS file system, GPT partition table |
