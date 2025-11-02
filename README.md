@@ -253,9 +253,6 @@ Repeat for every UEFI variable you wish to revert to its default value.
 </details>
 
 <details>
-  <summary>Fix broken Bluetooth on Wake from Hibernation</summary>
-
-<details>
   <summary>Fixing audio on macOS Tahoe</summary>
   
 ## Fixing audio on macOS Tahoe
@@ -266,7 +263,10 @@ You can [grab the latest installer](https://github.com/jlempen/Surface-Go-2-Open
 Once you're back in macOS Tahoe after a reboot, head over to `System Settings -> Sound -> Output & Input` and select the `Output` tab, then select `Speaker (Analog)` as your sound output device.
 </details>
 
-## Fix broken Bluetooth on Wake from Hibernation
+<details>
+  <summary>Fix broken Bluetooth on Wake from Hibernation</summary>
+
+## Fixing broken Bluetooth on Wake from Hibernation
 After the device wakes up from Hibernation, Bluetooth may be broken / unable to connect.
 
 A very simple fix for this issue is to [download and install Bluesnooze](https://github.com/odlp/bluesnooze). Launch the app, enable `Launch at login` and you're done!
