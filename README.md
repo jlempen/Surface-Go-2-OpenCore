@@ -9,10 +9,10 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 > You may however head over to [jalower's repo for the Pentium Gold Y4425 Microsoft Surface Go 2](https://github.com/jalower/Surface_Go_2_Opencore) if you wish to run macOS on the `Pentium Gold` variant of the Surface Go 2.
 
 ## Latest News
-* (20251102) Audio is working in `macOS Tahoe` thanks to a convenient installer for `VoodooHDA` ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
+* (20251102) Audio is now working in `macOS Tahoe` thanks to a convenient installer for `VoodooHDA` ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
 * (20251102) With the stuff merged today, `macOS Tahoe` installs and runs fine on the SGO2, but expect internal audio and FileVault to be broken. **_Don't enable FileVault when prompted at the end of the install process._** At the moment, restarting or shutting down the system will cause a kernel panic. Likewise when detaching and attaching the Type Cover.
-* (20251102) New Bluetooth fixes for `macOS Sequoia` and hopefully `macOS Tahoe` as well
-* (20251102) Recent Linux distros such as `Fedora 43` should now appear in the OC picker thanks to updated filesystem drivers
+* (20251102) New Bluetooth fixes for `macOS Sequoia` and hopefully `macOS Tahoe` as well.
+* (20251102) Recent Linux distros such as `Fedora 43` should now appear in the OpenCore picker thanks to updated `btrfs_x64.efi` and `ext4_x64.efi` filesystem drivers.
 
 ## Software Specifications
 | Software         | Version                            |
