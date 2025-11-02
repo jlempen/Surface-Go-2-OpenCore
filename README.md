@@ -13,7 +13,7 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 | ---------------- | ---------------------------------- |
 | Target device    | Microsoft Surface Go 2 with Core m3-8100Y processor |
 | Target OS        | Apple macOS 13 Ventura, 14 Sonoma and 15 Sequoia |
-| OpenCore         | [MOD-OC v1.0.5](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.5_b56882c/OpenCore-Mod-1.0.5-RELEASE.zip) |
+| OpenCore         | [MOD-OC v1.0.6](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.6_9cb2b0d/OpenCore-Mod-1.0.6-RELEASE.zip) |
 | SMBIOS           | MacBookAir8,1 |
 | SSD format       | APFS file system, GPT partition table |
 
