@@ -9,6 +9,7 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 > You may however head over to [jalower's repo for the Pentium Gold Y4425 Microsoft Surface Go 2](https://github.com/jalower/Surface_Go_2_Opencore) if you wish to run macOS on the `Pentium Gold` variant of the Surface Go 2.
 
 ## Latest News
+* (20251102) Audio is working in macOS Tahoe thanks to a convenient installer for VoodooHDA ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
 * (20251102) macOS Tahoe should now install and run on the SGO2, but internal audio and FileVault is broken
 * (20251102) New Bluetooth fixes for Sequia and hopefully Tahoe as well
 * (20251102) Recent Linux distros such as Fedora 43 should now appear in the OC picker thanks to updated filesystem drivers
@@ -253,7 +254,18 @@ Repeat for every UEFI variable you wish to revert to its default value.
 
 <details>
   <summary>Fix broken Bluetooth on Wake from Hibernation</summary>
+
+<details>
+  <summary>Fixing audio on macOS Tahoe</summary>
   
+## Fixing audio on macOS Tahoe
+As Apple removed the `AppleHDA.kext` from macOS Tahoe, [Acidanthera's AppleALC.kext](https://github.com/acidanthera/AppleALC) wont't work on macOS Tahoe just yet. Digital audio through HDMI is not affected though. The easiest way to get back the internal speakers and microphone on macOS Tahoe is to install [SergeySlice's VoodooHDA audio driver](https://github.com/CloverHackyColor/VoodooHDA) with [chris1111's convenient VoodooHDA-Tahoe installer](https://github.com/chris1111/VoodooHDA-Tahoe).
+
+You can [grab the latest installer](https://github.com/jlempen/Surface-Go-2-OpenCore/blob/main/Tools/VoodooHDA-Tahoe.pkg) from the Tools folder in my repository. Simply launch the installer and follow the instructions.
+
+Once you're back in macOS Tahoe after a reboot, head over to `System Settings -> Sound -> Output & Input` and select the `Output` tab, then select `Speaker (Analog)` as your sound output device.
+</details>
+
 ## Fix broken Bluetooth on Wake from Hibernation
 After the device wakes up from Hibernation, Bluetooth may be broken / unable to connect.
 
