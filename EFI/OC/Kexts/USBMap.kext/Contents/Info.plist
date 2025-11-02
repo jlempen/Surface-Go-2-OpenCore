@@ -52,6 +52,12 @@
 						<data>
 						AQAAAA==
 						</data>
+						<key>usb-port-number</key>
+						<data>
+						AQAAAA==
+						</data>
+						<key>usb-port-type</key>
+						<integer>9</integer>
 					</dict>
 					<key>HS02</key>
 					<dict>
@@ -61,6 +67,12 @@
 						<data>
 						BQAAAA==
 						</data>
+						<key>usb-port-number</key>
+						<data>
+						BQAAAA==
+						</data>
+						<key>usb-port-type</key>
+						<integer>255</integer>
 					</dict>
 					<key>HS03</key>
 					<dict>
@@ -70,6 +82,12 @@
 						<data>
 						BwAAAA==
 						</data>
+						<key>usb-port-number</key>
+						<data>
+						BwAAAA==
+						</data>
+						<key>usb-port-type</key>
+						<integer>3</integer>
 					</dict>
 					<key>SS01</key>
 					<dict>
@@ -81,6 +99,12 @@
 						<data>
 						DQAAAA==
 						</data>
+						<key>usb-port-number</key>
+						<data>
+						DQAAAA==
+						</data>
+						<key>usb-port-type</key>
+						<integer>9</integer>
 					</dict>
 					<key>SS02</key>
 					<dict>
@@ -90,6 +114,12 @@
 						<data>
 						DwAAAA==
 						</data>
+						<key>usb-port-number</key>
+						<data>
+						DwAAAA==
+						</data>
+						<key>usb-port-type</key>
+						<integer>255</integer>
 					</dict>
 				</dict>
 			</dict>
