@@ -10,7 +10,7 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 
 ## Latest News
 * (20251102) Audio is now working in `macOS Tahoe` thanks to a convenient installer for `VoodooHDA` ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
-* (20251102) With the stuff merged today, `macOS Tahoe` installs and runs fine on the SGO2, but expect ~~internal audio and~~ FileVault to be broken. **_Don't enable FileVault when prompted at the end of the install process._** At the moment, restarting or shutting down the system will cause a kernel panic. Likewise when detaching and attaching the Type Cover.
+* (20251102) With the stuff merged today, `macOS Tahoe` installs and runs quite nicely on the SGO2, but expect ~~internal audio and~~ FileVault to be broken. **_Don't enable FileVault when prompted at the end of the install process._** At the moment, restarting or shutting down the system will cause a kernel panic. Likewise when detaching and attaching the Type Cover.
 * (20251102) New Bluetooth fixes for `macOS Sequoia` and hopefully `macOS Tahoe` as well.
 * (20251102) Recent Linux distros such as `Fedora 43` should now appear in the OpenCore picker thanks to updated `btrfs_x64.efi` and `ext4_x64.efi` filesystem drivers.
 
@@ -18,7 +18,7 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 | Software         | Version                            |
 | ---------------- | ---------------------------------- |
 | Target device    | Microsoft Surface Go 2 with Core m3-8100Y processor |
-| Target OS        | Apple macOS 13 Ventura, 14 Sonoma, 15 Sequoia, 26 Tahoe (Work in Progress) |
+| Target OS        | Apple macOS 13 Ventura, 14 Sonoma, 15 Sequoia, 26 Tahoe (experimental) |
 | OpenCore         | [MOD-OC v1.0.6](https://github.com/wjz304/OpenCore_NO_ACPI_Build/releases/download/1.0.6_9cb2b0d/OpenCore-Mod-1.0.6-RELEASE.zip) |
 | SMBIOS           | MacBookAir8,1 |
 | SSD format       | APFS file system, GPT partition table |
@@ -31,7 +31,7 @@ The Surface Go 2 works great as a handy little macOS tablet. It won't entirely r
 The battery runtime is around five hours.
 
 > [!TIP]
-> I recommend installing `macOS 13 Ventura` rather than the newer `macOS 14 Sonoma` or `macOS 15 Sequoia`. The builtin Intel Wireless chip works almost perfectly with Apple's iServices and Continuity features on Ventura while those features are partially broken at the moment on newer versions of macOS.
+> I recommend installing `macOS 13 Ventura` rather than the newer `macOS 14 Sonoma`, `macOS 15 Sequoia` or `macOS Tahoe`. The builtin Intel Wireless chip works almost perfectly with Apple's iServices and Continuity features on `macOS Ventura` while those features are partially broken at the moment on newer versions of macOS.
 
 > [!IMPORTANT]
 > For macOS to be able to boot on the Surface Go 2, the `Secure Boot` option _**must be disabled**_ [in the UEFI](https://github.com/jlempen/Surface-Go-2-OpenCore/blob/main/README.md#uefi-settings). The boot screen will then display a large red bar with a padlock symbol at the top of the display when Secure Boot is disabled.
@@ -46,7 +46,7 @@ I recommend completely erasing the device's SSD by creating a new GPT partition 
 
 Please be aware that all `PlatformInfo` and `SMBIOS` information was removed from the OpenCore `config.plist` files. Users will therefore need to generate their own `PlatformInfo` with [CorpNewt's GenSMBIOS tool](https://github.com/corpnewt/GenSMBIOS) before attempting to boot a Surface Go 2 with this repository's EFI folder.
 
-`AirportItlwm-Ventura.kext`, `AirportItlwm-Sonoma140.kext` and `AirportItlwm-Sonoma144.kext` from the [OpenIntelWireless repo](https://github.com/OpenIntelWireless/itlwm) are required to enable the Wifi chip and were renamed for the same reason. This EFI will dynamically load the appropriate kext for macOS Ventura or Sonoma depending on the running kernel. No need to manually replace the kext file when updating your version of macOS. As the Intel Wifi chip does not yet work with the `AirportItlwm.kext` in macOS Sequoia, you'll need to use the `Itlwm.kext` and its companion app [HeliPort](https://github.com/OpenIntelWireless/HeliPort/releases) to connect to a Wifi network. You'll find the latest stable `HeliPort.dmg` in the [Tools folder](https://github.com/jlempen/Surface-Go-2-OpenCore/blob/main/Tools/HeliPort.dmg) of this repo. This EFI will dynamically load the `Itlwm.kext` instead of `AirportItlwm.kext` when you boot into macOS Sequoia.
+`AirportItlwm-Ventura.kext`, `AirportItlwm-Sonoma140.kext` and `AirportItlwm-Sonoma144.kext` from the [OpenIntelWireless repo](https://github.com/OpenIntelWireless/itlwm) are required to enable the Wifi chip and were renamed for the same reason. This EFI will dynamically load the appropriate kext for `macOS Ventura` or `macOS Sonoma` depending on the running kernel. No need to manually replace the kext file when updating your version of macOS. As the Intel Wifi chip does not yet work with the `AirportItlwm.kext` in `macOS Sequoia` and `macOS Tahoe`, you'll need to use the `Itlwm.kext` and its companion app [HeliPort](https://github.com/OpenIntelWireless/HeliPort/releases) to connect to a Wifi network. You'll find the latest stable `HeliPort.dmg` in the [Tools folder](https://github.com/jlempen/Surface-Go-2-OpenCore/blob/main/Tools/HeliPort.dmg) of this repo. This EFI will dynamically load the `Itlwm.kext` instead of `AirportItlwm.kext` when you boot into `macOS Sequoia` or `macOS Tahoe`.
 
 Windows and Linux should be detected automagically by the OpenCore boot loader even when installed after macOS.
 
@@ -93,7 +93,8 @@ This repository uses the unofficial OpenCore_NO_ACPI_Build fork of OpenCore by [
 - [x] Internal speakers, microphone and Combojack
 - [x] Power, volume up and volume down buttons
 - [x] Surface Type Cover keyboard with working brightness, volume and mute keys, working caps lock light
-- [x] Surface Type Cover trackpad with native multi-touch gestures
+- [x] Surface Type Cover trackpad with native multi-touch 
+- [x] Detaching and attaching the Type Cover (broken in `macOS Tahoe` at the moment)
 - [x] Touchscreen
 - [x] Surface Pen
 - [x] MicroSD Card reader
@@ -120,7 +121,7 @@ This repository uses the unofficial OpenCore_NO_ACPI_Build fork of OpenCore by [
 - [ ] Front & rear cameras
 - [ ] IR camera (Windows Hello)
 - [ ] NFC
-- [ ] LTE
+- [ ] LTE Modem
 </details>
 
 <details>
