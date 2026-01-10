@@ -11,7 +11,6 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 ## Latest News
 * (20260110) Added resources and instructions to enable `AirportItlwm.kext` on macOS Sequoia and Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main?tab=readme-ov-file#enabling-the-intel-wireless-card-in-macos-sequoia-and-tahoe)).
 * (20260110) Fixing audio in macOS Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
-* (20251102) Audio is now working in `macOS Tahoe` thanks to a convenient installer for `VoodooHDA` ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
 * (20251102) With the stuff merged today, `macOS Tahoe` installs and runs quite nicely on the SGO2, but expect ~~internal audio and~~ FileVault to be broken. **_Don't enable FileVault when prompted at the end of the install process._** At the moment, restarting or shutting down the system will cause a kernel panic. Likewise when detaching and attaching the Type Cover.
 * (20251102) New Bluetooth fixes for `macOS Sequoia` and hopefully `macOS Tahoe` as well.
 * (20251102) Recent Linux distros such as `Fedora 43` should now appear in the OpenCore picker thanks to updated `btrfs_x64.efi` and `ext4_x64.efi` filesystem drivers.
@@ -353,11 +352,10 @@ The most convenient way to show/hide the On-Screen Keyboard when using the Surfa
 <details>
   <summary>Fixing broken Apple Messages and FaceTime</summary>
   
-## Fixing broken Apple Messages and FaceTime
+## Fixing broken Apple Messages and FaceTime on macOS Sonoma
 To fix issues with Apple Messages and FaceTime related to the [Intel Wireless driver](https://github.com/OpenIntelWireless/itlwm) on macOS Sonoma, disable all `AirportItlwm-***.kext` entries under `Kernel -> Add` in your `config.plist` file and use the [itlwm_v2.3.0_stable.kext.zip](https://github.com/OpenIntelWireless/itlwm/releases/download/v2.3.0/itlwm_v2.3.0_stable.kext.zip) and its companion app [HeliPort](https://github.com/OpenIntelWireless/HeliPort/releases/download/v1.4.1/HeliPort.dmg) instead.
-The latest version 2.3.0 of `itlwm.kext` is already included in the Kext folder and `config.plist` file.
 
-In addition to the above, to enable `itlwm.kext` under macOS Ventura and macOS Sonoma, you need to delete any text (i.e. `24.0.0` and `24.99.99` respectively) in the `MinKernel` and `MaxKernel` fields under `Kernel -> Add -> itlwm.kext` in your `config.plist` file.
+The latest version 2.3.0 of `itlwm.kext` is already included in the Kext folder and `config.plist` file.
 </details>
 
 <details>
