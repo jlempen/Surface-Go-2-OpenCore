@@ -1765,11 +1765,11 @@
                     <key>Arguments</key>
                     <string></string>
                     <key>Comment</key>
-                    <string></string>
+                    <string>apfs_aligned.efi</string>
                     <key>Enabled</key>
-                    <true/>
+                    <false/>
                     <key>LoadEarly</key>
-                    <true/>
+                    <false/>
                     <key>Path</key>
                     <string>apfs_aligned.efi</string>
                 </dict>
