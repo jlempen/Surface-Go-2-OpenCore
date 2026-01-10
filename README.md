@@ -9,6 +9,7 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 > You may however head over to [jalower's repo for the Pentium Gold Y4425 Microsoft Surface Go 2](https://github.com/jalower/Surface_Go_2_Opencore) if you wish to run macOS on the `Pentium Gold` variant of the Surface Go 2.
 
 ## Latest News
+* (20260111) Added the `apfs_aligned.efi` driver to fix `FileVault` when upgrading to macOS Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-filevault-when-upgrading-to-macos-tahoe)).
 * (20260110) Added resources and instructions to enable `AirportItlwm.kext` on macOS Sequoia and Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main?tab=readme-ov-file#enabling-the-intel-wireless-card-in-macos-sequoia-and-tahoe)).
 * (20260110) Fixing audio in macOS Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
 * (20251102) With the stuff merged today, `macOS Tahoe` installs and runs quite nicely on the SGO2, but expect ~~internal audio and~~ FileVault to be broken. **_Don't enable FileVault when prompted at the end of the install process._** At the moment, restarting or shutting down the system will cause a kernel panic. Likewise when detaching and attaching the Type Cover.
@@ -336,6 +337,19 @@ Once you're back in macOS Tahoe after a reboot, head over to `System Settings ->
 After the device wakes up from Hibernation, Bluetooth may be broken / unable to connect.
 
 A very simple fix for this issue is to [download and install Bluesnooze](https://github.com/odlp/bluesnooze). Launch the app, enable `Launch at login` and you're done!
+</details>
+
+<details>
+  <summary>Fixing FileVault when upgrading to macOS Tahoe</summary>
+  
+## Fixing FileVault when upgrading to macOS Tahoe
+If you enabled FileVault in your macOS installation and upgrade to macOS Tahoe, the installer will prompt you to enter your FileVault password but it will not accept your password even if it is correct. This is because Tahoe's APFS driver doesn't support the software FileVault created on previous versions of macOS.
+
+To fix this, open the `UEFI -> Drivers` tab in your `config.plist` file and enable the `apfs_aligned.efi` driver.
+
+Then head over to the `UEFI -> APFS` tab and disable the `EnableJumpstart` option.
+
+Save and close the `config.plist` file and restart your computer. The Installer should now accept your APFS password.
 </details>
 
 <details>
