@@ -111,9 +111,9 @@ This repository uses the unofficial OpenCore_NO_ACPI_Build fork of OpenCore by [
   <summary>What needs some more work</summary>
   
 ## What needs some more work
+- [ ] Detaching or attaching the Type Cover causes a kernel panic on macOS Tahoe
+- [ ] Shutdown or restart with the Type Cover attached causes a kernel panic on macOS Tahoe
 - [ ] Sleep (hibernatemode 3) - the device wakes up from sleep displaying the Surface logo on the internal display
-- [ ] Accelerometers, gyroscope
-- [ ] Ambient light sensor
 </details>
 
 <details>
