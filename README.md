@@ -271,8 +271,10 @@ Launch the OCLP-Mod Patcher, this may take a few seconds. As of January 2026, th
 
 Now click on the upper right button to select the Root Patching option:
 <img width="712" height="443" alt="Screenshot 2026-01-10 at 00 43 16" src="https://github.com/user-attachments/assets/3af5464a-836b-4f71-a0fc-8ac8bd4af304" />
+
 Then click on the highlighted button or press Enter to start the patching process:
 <img width="712" height="443" alt="Screenshot 2026-01-10 at 00 46 51" src="https://github.com/user-attachments/assets/843687df-655f-47ea-bfc8-5b3f06681756" />
+
 Once the patching is done, click on the highlighted button or press Enter to close the tool and restart your computer. Your Intel wireless card should be working now.
 
 > [!IMPORTANT]
@@ -304,7 +306,7 @@ Then head over to the `NVRAM` tab, select the `7C436110-AB2A-4BBB-A880-FE41995C9
 
 Save and close the `config.plist` file and reboot your computer.
 
-Download and install the latest HeliPort Intel WiFi client for `itlwm` from [the OpenIntelWireless project](https://openintelwireless.github.io/HeliPort/#download).
+Download and install the latest `HeliPort` Intel WiFi client for `itlwm` from [the OpenIntelWireless project](https://openintelwireless.github.io/HeliPort/#download).
 
 Add the `HeliPort` client to your login items and hide the macOS WiFi icon from the Menu Bar.
 </details>
