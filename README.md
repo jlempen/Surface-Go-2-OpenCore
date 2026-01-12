@@ -8,6 +8,17 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 > 
 > You may however head over to [jalower's repo for the Pentium Gold Y4425 Microsoft Surface Go 2](https://github.com/jalower/Surface_Go_2_Opencore) if you wish to run macOS on the `Pentium Gold` variant of the Surface Go 2.
 
+> [!WARNING]
+> ### Installing or upgrading to macOS Tahoe
+> 
+> When  <ins>**upgrading**</ins> your existing installation to macOS Tahoe, you <ins>**MUST**</ins> log out of your `Apple Account` (iCloud) before proceeding with the upgrade. Furthermore make sure you <ins>**DESELECT**</ins> the option to enable `FileVault` disk encryption in the installer and do not sign into your `Apple Account` (iCloud) until the installer is done and you reach the desktop. Failing to do so will eventually encrypt your disk and prevent you from unlocking your disk with your password on restart.
+>
+> If `FileVault` disk encryption is enabled in your existing installation of macOS and you wish to keep it enabled in macOS Tahoe, then [carefully read the section below](https://github.com/jlempen/Surface-Laptop-3-OpenCore/tree/main#fixing-filevault-when-upgrading-to-macos-tahoe) before proceeding with the upgrade.
+>
+> When doing a <ins>**clean install**</ins> of macOS Tahoe, make sure you <ins>**DESELECT**</ins> the option to enable `FileVault` disk encryption in the installer and do not sign into your `Apple Account` (iCloud) until the installer is done and you reach the desktop. Failing to do so will eventually encrypt your disk and prevent you from unlocking your disk with your password on restart.
+>
+> If you wish to enable `FileVault` disk encryption in macOS Tahoe, [carefully read the section below](https://github.com/jlempen/Surface-Laptop-3-OpenCore/tree/main#fixing-filevault-when-upgrading-to-macos-tahoe).
+
 ## Latest News
 * (20260111) Added the `apfs_aligned.efi` driver to fix `FileVault` when upgrading to macOS Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-filevault-when-upgrading-to-macos-tahoe)).
 * (20260110) Added resources and instructions to enable `AirportItlwm.kext` on macOS Sequoia and Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main?tab=readme-ov-file#enabling-the-intel-wireless-card-in-macos-sequoia-and-tahoe)).
@@ -343,13 +354,20 @@ A very simple fix for this issue is to [download and install Bluesnooze](https:/
   <summary>Fixing FileVault when upgrading to macOS Tahoe</summary>
   
 ## Fixing FileVault when upgrading to macOS Tahoe
-If you enabled FileVault in your macOS installation and upgrade to macOS Tahoe, the installer will prompt you to enter your FileVault password but it will not accept your password even if it is correct. This is because Tahoe's APFS driver doesn't support the software FileVault created on previous versions of macOS.
+If `FileVault` disk encryption is enabled during the upgrade or install of macOS Tahoe, the `FileVault` login window will reject your password and the encrypted disk will remain locked after the first reboot. This is due to Tahoe's APFS filesystem driver not supporting the software `FileVault` disk encryption created with previous versions of macOS.
 
-To fix this, open the `UEFI -> Drivers` tab in your `config.plist` file and enable the `apfs_aligned.efi` driver.
+There are two solutions to this rather annoying issue:
+
+### Enabling the older APFS driver from macOS Sequoia
+Open the `UEFI -> Drivers` tab in your `config.plist` file and enable the `apfs_aligned.efi` driver.
 
 Then head over to the `UEFI -> APFS` tab and disable the `EnableJumpstart` option.
 
-Save and close the `config.plist` file and restart your computer. The Installer should now accept your APFS password.
+Save and close the `config.plist` file and restart your computer. The `FileVault` login window should now accept your password and unlock the disk.
+
+### Turning off FileVault in the macOS Recovery Console
+Follow the nice instructions [on Jac Timms' website](https://www.ichi.co.uk/blog/removing-file-vault-from-internet-recovery-console).
+
 </details>
 
 <details>
