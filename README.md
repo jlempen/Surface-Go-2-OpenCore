@@ -272,7 +272,7 @@ Repeat for every UEFI variable you wish to revert to its default value.
   
 ## Enabling the Intel Wireless Card in macOS Sequoia and Tahoe
 
-## With the AirportItlwm.kext driver and root patching
+### Using the AirportItlwm.kext driver and root patching
 It is now possible to have Intel WiFi with native Airport features on macOS Sequoia and Tahoe by enabling the `AirportItlwm.kext` driver for macOS Ventura provided by [the OpenIntelWireless project](https://openintelwireless.github.io/). 
 
 `AirportItlwm.kext` uses Apple's IO80211Family. It provides certain Airport features but lacks stability compared with `itlwm.kext` due to the ambiguity of reverse engineering.
@@ -292,7 +292,7 @@ Once the patching is done, click on the highlighted button or press Enter to clo
 > [!IMPORTANT]
 > You'll need to repeat the above steps after every macOS update!
 
-## With the Itlwm.kext driver
+### Using the Itlwm.kext driver
 `itlwm.kext` uses Apple's IOEthernet rather than IO80211. It is purely based on open-source resources, provides a stabler and faster performance, and the ability to unload on Kernels that use prelined kernel.
 
 To enable Intel WiFi with the `itlwm.kext` driver, open the `Kernel -> Add` tab in your `config.plist` file.
@@ -328,12 +328,11 @@ Add the `HeliPort` client to your login items and hide the macOS WiFi icon from 
   
 ## Fixing audio on macOS Tahoe
 
-## By root patching
+### By root patching
 As Apple removed the `AppleHDA.kext` from macOS Tahoe, [Acidanthera's AppleALC.kext](https://github.com/acidanthera/AppleALC) won't work on macOS Tahoe out of the box and audio is broken. To fix this, simply run [Laobamac's OCLP-Mod Patcher](https://github.com/laobamac/OCLP-Mod/releases) a second time once you have [fixed the Intel wireless card](https://github.com/jlempen/Surface-Laptop-3-OpenCore/tree/main?tab=readme-ov-file#enabling-the-intel-wireless-card-in-macos-sequoia-and-tahoe) and Internet is working again. The reason for this is that the OCLP-Mod Patcher needs to download the Kernel Development Kit from Apple's servers in order to reinstall the `AppleHDA.kext` on your macOS Tahoe partition and to do so, it needs a working Internet connection. 
 
-## By installing the VoodooHDA audio driver
-Another way to get back the internal speakers and microphone on macOS Tahoe is to install [SergeySlice's VoodooHDA audio driver](https://github.com/CloverHackyColor/VoodooHDA) with [chris1111's convenient VoodooHDA-Tahoe installer](https://github.com/chris1111/VoodooHDA-Tahoe). This has the added benefit of fixing the loud click you hear from your speakers when playing sound for the first time after waking your SL3 from hibernation.
-
+### By installing the VoodooHDA audio driver
+Another way to get back the internal speakers and microphone on macOS Tahoe is to install [SergeySlice's VoodooHDA audio driver](https://github.com/CloverHackyColor/VoodooHDA) with [chris1111's convenient VoodooHDA-Tahoe installer](https://github.com/chris1111/VoodooHDA-Tahoe).
 Before installing the VoodooHDA driver, you need to disable the `AppleALC.kext` driver in your `config.plist` file under `Kernel -> Add` and reboot your computer.
 
 Then [grab the latest installer](https://github.com/jlempen/Surface-Laptop-3-OpenCore/blob/main/Tools/VoodooHDA-Tahoe.pkg) from the Tools folder in my repository, launch the installer and follow the instructions.
