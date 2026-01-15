@@ -11,7 +11,7 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 > [!WARNING]
 > ### Installing or upgrading to macOS Tahoe
 >
-> As of January 2026, the Type Cover causes a kernel panic on restart, shutdown and when detaching and attaching the Type Cover to the SGO2. While working on a fix, I recommend using an external USB keyboard and mouse to complete the upgrade or install of macOS Tahoe. While the Type Cover allows installing or upgrading Tahoe, keep in mind that you'll have to forcefully shutdown the SGO2 every time the installer attempts to reboot and hangs due to the kernel panic.
+> As of January 2026, the Type Cover works in the installer and on the installed system, but it causes a kernel panic on restart, shutdown and when detaching and attaching the Type Cover to the SGO2. While working on a fix, I recommend using an external USB keyboard and mouse to complete the upgrade or install of macOS Tahoe. It is abolutely possible to install or upgrade to Tahoe with the Type Cover attached, but keep in mind that you'll have to forcefully shutdown the SGO2 everytime the installer attempts to reboot and hangs due to the kernel panic.
 > 
 > When  <ins>**upgrading**</ins> your existing installation to macOS Tahoe, you <ins>**MUST**</ins> log out of your `Apple Account` (iCloud) before proceeding with the upgrade. Furthermore make sure you <ins>**DESELECT**</ins> the option to enable `FileVault` disk encryption in the installer and do not sign into your `Apple Account` (iCloud) until the installer is done and you reach the desktop. Failing to do so will eventually encrypt your disk and prevent you from unlocking your disk with your password on restart.
 >
