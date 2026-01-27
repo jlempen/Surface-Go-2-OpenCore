@@ -352,6 +352,11 @@ Then enable the following kext:
 itlwm.kext
 ```
 
+Then head over to the `Kernel -> Block` tab and disable the following line:
+```
+com.apple.iokit.IOSkywalkFamily
+```
+
 Save and close the `config.plist` file.
 
 Then open the `info.plist` file inside the `itlwm.kext` and add the name and password for your Wifi network in the `ssid` and `password` fields. Save and close the file and reboot into the macOS installer. Your installer should automagically connect to your Wifi network now.
