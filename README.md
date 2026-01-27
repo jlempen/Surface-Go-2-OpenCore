@@ -22,6 +22,7 @@ macOS on the Core m3-8100Y Microsoft Surface Go 2 thanks to [Acidanthera's OpenC
 > If you wish to enable `FileVault` disk encryption in macOS Tahoe, [carefully read the section below](https://github.com/jlempen/Surface-Laptop-3-OpenCore/tree/main#fixing-filevault-when-upgrading-to-macos-tahoe).
 
 ## Latest News
+* (20260127) Added instructions to enable Wifi in the macOS Sequoia and Tahoe installer ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#enabling-the-intel-wireless-card-in-the-macos-sequoia-and-tahoe-installer)).
 * (20260111) Added the `apfs_aligned.efi` driver to fix `FileVault` when upgrading to macOS Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-filevault-when-upgrading-to-macos-tahoe)).
 * (20260110) Added resources and instructions to enable `AirportItlwm.kext` on macOS Sequoia and Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main?tab=readme-ov-file#enabling-the-intel-wireless-card-in-macos-sequoia-and-tahoe)).
 * (20260110) Fixing audio in macOS Tahoe ([see section below](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#fixing-audio-on-macos-tahoe)).
@@ -63,6 +64,8 @@ Please be aware that all `PlatformInfo` and `SMBIOS` information was removed fro
 In macOS Sequoia and Tahoe, you'll need to apply root patches with [Laobamac's OCLP-Mod Patcher](https://github.com/laobamac/OCLP-Mod/releases) once the OS is up and running in order to enable the Intel Wifi chip. [Head over to the instructions.](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main?tab=readme-ov-file#enabling-the-intel-wireless-card-in-macos-sequoia-and-tahoe).
 
 the `Itlwm.kext` driver and its companion app [HeliPort](https://github.com/OpenIntelWireless/HeliPort/releases) are included but disabled in this EFI for those who prefer to connect to their Wifi network this way. You'll find the latest stable `HeliPort.dmg` in the [Tools folder](https://github.com/jlempen/Surface-Go-2-OpenCore/blob/main/Tools/HeliPort.dmg) of this repo.
+
+The macOS installer USB sticks created on Linux or Windows are __online__ installers which require a working Internet connection. To install macOS Sequoia or Tahoe with an online installer, you'll need to disable the `AirportItlwm.kext` Intel Wifi driver and use the `itlwm.kext` Intel Wifi driver instead. To do so, [follow the instructions here](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#enabling-the-intel-wireless-card-in-the-macos-sequoia-and-tahoe-installer). You could also use an USB to Ethernet adapter to connect to your router with a good old Ethernet cable.
 
 Windows and Linux should be detected automagically by the OpenCore boot loader even when installed after macOS.
 
@@ -323,6 +326,39 @@ Save and close the `config.plist` file and reboot your computer.
 Download and install the latest `HeliPort` Intel WiFi client for `itlwm` from [the OpenIntelWireless project](https://openintelwireless.github.io/HeliPort/#download).
 
 Add the `HeliPort` client to your login items and hide the macOS WiFi icon from the Menu Bar.
+</details>
+
+<details>
+  <summary>Enabling the Intel Wireless Card in the macOS Sequoia and Tahoe installer</summary>
+  
+## Enabling the Intel Wireless Card in the macOS Sequoia and Tahoe installer
+To have working Wifi in the installer for macOS Sequoia or Tahoe, you'll need to disable the `AirportItlwm.kext` driver and use the `itlwm.kext` driver instead.
+
+Open the `Kernel -> Add` tab in your `config.plist` file.
+
+Disable the following kexts:
+
+```
+IOSkywalkFamily.kext
+IO80211FamilyLegacy.kext
+IO80211FamilyLegacy.kext/Contents/PlugIns/AirPortBrcmNIC.kext
+AMFIPass.kext
+AirportItlwm-Sequoia-Tahoe.kext
+```
+
+Then enable the following kext:
+
+```
+itlwm.kext
+```
+
+Save and close the `config.plist` file.
+
+Then open the `info.plist` file inside the `itlwm.kext` and add the name and password for your Wifi network in the `ssid` and `password` fields. Save and close the file and reboot into the macOS installer. Your installer should automagically connect to your Wifi network now.
+
+<img width="930" height="771" alt="Image" src="https://github.com/user-attachments/assets/094a62e7-bb90-4d8b-a92e-57f7c4a4f682" />
+
+Once macOS Sequoia or Tahoe is up and running, you may switch back to the `AirportItlwm.kext` driver by reverting the changes you made above, then [follow my instructions](https://github.com/jlempen/Surface-Go-2-OpenCore/tree/main#enabling-the-intel-wireless-card-in-macos-sequoia-and-tahoe) to apply the root patches which enable the Intel Wifi chip.
 </details>
 
 <details>
